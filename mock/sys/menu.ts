@@ -136,6 +136,27 @@ const levelRoute = {
   ],
 };
 
+const testRoute = {
+  path: '/test',
+  name: 'Test',
+  component: 'LAYOUT',
+  redirect: '/test/dict',
+  meta: {
+    icon: 'ion:settings-outline',
+    title: 'routes.demo.test.test1',
+  },
+  children: [
+    {
+      path: 'dict',
+      name: 'DictManagement',
+      meta: {
+        title: 'routes.demo.test.dict',
+        ignoreKeepAlive: true,
+      },
+      component: '/demo/test/dict/index',
+    }]
+};
+
 const sysRoute = {
   path: '/system',
   name: 'System',
@@ -254,7 +275,7 @@ export default [
       switch (id) {
         case '1':
           dashboardRoute.redirect = dashboardRoute.path + '/' + dashboardRoute.children[0].path;
-          menu = [dashboardRoute, authRoute, levelRoute, sysRoute, linkRoute];
+          menu = [dashboardRoute, authRoute, levelRoute, sysRoute,testRoute, linkRoute];
           break;
         case '2':
           dashboardRoute.redirect = dashboardRoute.path + '/' + dashboardRoute.children[1].path;

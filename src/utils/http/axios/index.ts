@@ -93,10 +93,12 @@ const transform: AxiosTransform = {
     if (joinPrefix) {
       config.url = `${urlPrefix}${config.url}`;
     }
-
-    if (apiUrl && isString(apiUrl)) {
-      config.url = `${apiUrl}${config.url}`;
+    if(config.url?.startsWith("/")){
+      if (apiUrl && isString(apiUrl)) {
+        config.url = `${apiUrl}${config.url}`;
+      }
     }
+
     const params = config.params || {};
     const data = config.data || false;
     formatDate && data && !isString(data) && formatRequestDate(data);
