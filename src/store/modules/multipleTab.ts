@@ -204,13 +204,13 @@ export const useMultipleTabStore = defineStore({
           toTarget = userStore.getUserInfo.homePath || PageEnum.BASE_HOME;
         } else {
           //  Jump to the right tab
-          const page = this.tabList[index + 1];
-          toTarget = getToTarget(page);
+          const pageNum = this.tabList[index + 1];
+          toTarget = getToTarget(pageNum);
         }
       } else {
         // Close the current tab
-        const page = this.tabList[index - 1];
-        toTarget = getToTarget(page);
+        const pageNum = this.tabList[index - 1];
+        toTarget = getToTarget(pageNum);
       }
       close(currentRoute.value);
       await replace(toTarget);
@@ -237,8 +237,8 @@ export const useMultipleTabStore = defineStore({
             pageIndex = -1;
           }
           if (pageIndex >= 0) {
-            const page = this.tabList[index - 1];
-            const toTarget = getToTarget(page);
+            const pageNum = this.tabList[index - 1];
+            const toTarget = getToTarget(pageNum);
             await replace(toTarget);
           }
         }

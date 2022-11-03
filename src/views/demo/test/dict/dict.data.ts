@@ -7,19 +7,14 @@ import { useMessage } from '/@/hooks/web/useMessage';
 
 export const columns: BasicColumn[] = [
   {
-    title: '角色名称',
-    dataIndex: 'roleName',
+    title: '字典编码',
+    dataIndex: 'dictCode',
     width: 200,
   },
   {
-    title: '角色值',
-    dataIndex: 'roleValue',
+    title: '字典名称',
+    dataIndex: 'dictCaption',
     width: 180,
-  },
-  {
-    title: '排序',
-    dataIndex: 'orderNo',
-    width: 50,
   },
   {
     title: '状态',
@@ -66,13 +61,19 @@ export const columns: BasicColumn[] = [
 
 export const searchFormSchema: FormSchema[] = [
   {
-    field: 'roleNme',
-    label: '角色名称',
+    field: 'dictCaption',
+    label: '字典名称',
     component: 'Input',
-    colProps: { span: 8 },
+    colProps: { span: 6 },
   },
   {
-    field: 'status',
+    field: 'dictCode',
+    label: '字典编码',
+    component: 'Input',
+    colProps: { span: 6 },
+  },
+  {
+    field: 'requestParam.status',
     label: '状态',
     component: 'Select',
     componentProps: {
@@ -81,7 +82,7 @@ export const searchFormSchema: FormSchema[] = [
         { label: '停用', value: '1' },
       ],
     },
-    colProps: { span: 8 },
+    colProps: { span: 4 },
   },
 ];
 

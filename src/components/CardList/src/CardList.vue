@@ -141,20 +141,20 @@
   async function fetch(p = {}) {
     const { api, params } = props;
     if (api && isFunction(api)) {
-      const res = await api({ ...params, page: page.value, pageSize: pageSize.value, ...p });
+      const res = await api({ ...params, pageNum: pageNum.value, pageSize: pageSize.value, ...p });
       data.value = res.items;
       total.value = res.total;
     }
   }
   //分页相关
-  const page = ref(1);
+  const pageNum = ref(1);
   const pageSize = ref(36);
   const total = ref(0);
   const paginationProp = ref({
     showSizeChanger: false,
     showQuickJumper: true,
     pageSize,
-    current: page,
+    current: pageNum,
     total,
     showTotal: (total) => `总 ${total} 条`,
     onChange: pageChange,
@@ -162,7 +162,7 @@
   });
 
   function pageChange(p, pz) {
-    page.value = p;
+    pageNum.value = p;
     pageSize.value = pz;
     fetch();
   }

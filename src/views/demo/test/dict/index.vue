@@ -38,7 +38,7 @@
   import { useDrawer } from '/@/components/Drawer';
   import RoleDrawer from './RoleDrawer.vue';
 
-  import { columns, searchFormSchema } from './role.data';
+  import { columns, searchFormSchema } from './dict.data';
 
   export default defineComponent({
     name: 'DictManagement',
@@ -56,7 +56,7 @@
         useSearchForm: true,
         showTableSetting: true,
         bordered: true,
-        showIndexColumn: false,
+        showIndexColumn: true,
         actionColumn: {
           width: 80,
           title: '操作',
@@ -64,6 +64,7 @@
           // slots: { customRender: 'action' },
           fixed: undefined,
         },
+        pagination: true,
       });
 
       function handleCreate() {

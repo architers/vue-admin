@@ -30,7 +30,7 @@
 
       function handleReload() {
         reload({
-          page: 1,
+          pageNum: 1,
         });
       }
       return {

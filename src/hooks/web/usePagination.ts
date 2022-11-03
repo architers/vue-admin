@@ -1,8 +1,8 @@
 import type { Ref } from 'vue';
 import { ref, unref, computed } from 'vue';
 
-function pagination<T = any>(list: T[], pageNo: number, pageSize: number): T[] {
-  const offset = (pageNo - 1) * Number(pageSize);
+function pagination<T = any>(list: T[], pageNum: number, pageSize: number): T[] {
+  const offset = (pageNum - 1) * Number(pageSize);
   const ret =
     offset + Number(pageSize) >= list.length
       ? list.slice(offset, list.length)
@@ -22,8 +22,8 @@ export function usePagination<T = any>(list: Ref<T[]>, pageSize: number) {
     return unref(list).length;
   });
 
-  function setCurrentPage(page: number) {
-    currentPage.value = page;
+  function setCurrentPage(pageNum: number) {
+    currentPage.value = pageNum;
   }
 
   function setPageSize(pageSize: number) {

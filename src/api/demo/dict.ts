@@ -11,7 +11,16 @@ enum Api {
 
 }
 
-export const getDictByPage = (params: DictPageParams) =>
-  defHttp.post<DictPageReturn>({url: Api.getDictByPage, data: {params}});
+export const getDictByPage = (params) => {
+  let data = {
+    pageParam: {
+      pageSize: params.pageSize,
+      pageNum: params.pageNum
+    },
+    requestParam: params.requestParam
+  };
+  defHttp.post<DictPageReturn>({url: Api.getDictByPage, data: data});
+}
+
 
 

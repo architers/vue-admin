@@ -48,8 +48,8 @@ export default [
     timeout: 100,
     method: 'get',
     response: ({ query }) => {
-      const { page = 1, pageSize = 20 } = query;
-      return resultPageSuccess(page, pageSize, demoList);
+      const { pageNum = 1, pageSize = 20 } = query;
+      return resultPageSuccess(pageNum, pageSize, demoList);
     },
   },
 ] as MockMethod[];

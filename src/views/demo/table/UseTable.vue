@@ -82,7 +82,7 @@
         setColumns(getBasicColumns());
 
         reload({
-          page: 1,
+          pageNum: 1,
         });
       }
       function getColumn() {

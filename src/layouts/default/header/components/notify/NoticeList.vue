@@ -118,9 +118,9 @@
             pageSize,
             //size: 'small',
             current: unref(current),
-            onChange(page) {
-              current.value = page;
-              emit('update:currentPage', page);
+            onChange(pageNum) {
+              current.value = pageNum;
+              emit('update:currentPage', pageNum);
             },
           };
         } else {

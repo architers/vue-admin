@@ -7,16 +7,16 @@ import { PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../const';
 import { useI18n } from '/@/hooks/web/useI18n';
 
 interface ItemRender {
-  page: number;
+  pageNum: number;
   type: 'page' | 'prev' | 'next';
   originalElement: any;
 }
 
-function itemRender({ page, type, originalElement }: ItemRender) {
+function itemRender({ pageNum, type, originalElement }: ItemRender) {
   if (type === 'prev') {
-    return page === 0 ? null : <LeftOutlined />;
+    return pageNum === 0 ? null : <LeftOutlined />;
   } else if (type === 'next') {
-    return page === 1 ? null : <RightOutlined />;
+    return pageNum === 1 ? null : <RightOutlined />;
   }
   return originalElement;
 }

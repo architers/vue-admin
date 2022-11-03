@@ -60,7 +60,7 @@
         getTableAction().setColumns(getBasicColumns());
 
         getTableAction().reload({
-          page: 1,
+          pageNum: 1,
         });
       }
       function getColumn() {

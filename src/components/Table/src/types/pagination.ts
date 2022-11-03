@@ -2,7 +2,7 @@ import Pagination from 'ant-design-vue/lib/pagination';
 import { VNodeChild } from 'vue';
 
 interface PaginationRenderProps {
-  page: number;
+  pageNum: number;
   type: 'page' | 'prev' | 'next';
   originalElement: any;
 }
@@ -99,6 +99,8 @@ export interface PaginationProps {
    * @type boolean
    */
   simple?: boolean;
+
+  paramsPrefix: false,
 
   /**
    * to customize item innerHTML

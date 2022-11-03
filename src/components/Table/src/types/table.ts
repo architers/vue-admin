@@ -69,7 +69,7 @@ export interface SorterResult {
 
 export interface FetchParams {
   searchInfo?: Recordable;
-  page?: number;
+  pageNum?: number;
   sortInfo?: Recordable;
   filterInfo?: Recordable;
 }
