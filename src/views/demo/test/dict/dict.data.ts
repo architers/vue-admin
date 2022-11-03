@@ -54,8 +54,24 @@ export const columns: BasicColumn[] = [
     width: 180,
   },
   {
+    title: '创建人',
+    dataIndex: 'createBy',
+    width: 180,
+  },
+  {
+    title: '更新时间',
+    dataIndex: 'updateTime',
+    width: 180,
+  },
+  {
+    title: '更新人',
+    dataIndex: 'updateBy',
+    width: 180,
+  },
+  {
     title: '备注',
     dataIndex: 'remark',
+    width: 200,
   },
 ];
 
@@ -73,53 +89,25 @@ export const searchFormSchema: FormSchema[] = [
     colProps: { span: 6 },
   },
   {
-    field: 'requestParam.status',
+    field: 'status',
     label: '状态',
     component: 'Select',
+    defaultValue: '1',
     componentProps: {
       options: [
-        { label: '启用', value: '0' },
-        { label: '停用', value: '1' },
+        { label: '启用', value: '1' },
+        { label: '停用', value: '0' },
       ],
     },
-    colProps: { span: 4 },
+    colProps: { span: 5 },
   },
 ];
 
 export const formSchema: FormSchema[] = [
   {
-    field: 'roleName',
-    label: '角色名称',
+    field: 'dictCode',
+    label: '字典编码',
     required: true,
-    component: 'Input',
-  },
-  {
-    field: 'roleValue',
-    label: '角色值',
-    required: true,
-    component: 'Input',
-  },
-  {
-    field: 'status',
-    label: '状态',
-    component: 'RadioButtonGroup',
-    defaultValue: '0',
-    componentProps: {
-      options: [
-        { label: '启用', value: '0' },
-        { label: '停用', value: '1' },
-      ],
-    },
-  },
-  {
-    label: '备注',
-    field: 'remark',
-    component: 'InputTextArea',
-  },
-  {
-    label: ' ',
-    field: 'menu',
-    slot: 'menu',
     component: 'Input',
   },
 ];

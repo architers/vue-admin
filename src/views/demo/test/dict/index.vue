@@ -2,7 +2,10 @@
   <div>
     <BasicTable @register="registerTable">
       <template #toolbar>
-        <a-button type="primary" @click="handleCreate"> 新增角色 </a-button>
+        <a-button type="primary" @click="handleCreate"> 新增字典 </a-button>
+        <a-button type="primary" @click="handleCreate"> 批量删除 </a-button>
+        <a-button type="primary" @click="handleCreate"> 导入(json) </a-button>
+        <a-button type="primary" @click="handleCreate"> 导出(json) </a-button>
       </template>
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'action'">
@@ -36,13 +39,13 @@
   import { getDictByPage } from '/@/api/demo/dict';
 
   import { useDrawer } from '/@/components/Drawer';
-  import RoleDrawer from './RoleDrawer.vue';
+  import DictDrawer from './DictDrawer.vue';
 
   import { columns, searchFormSchema } from './dict.data';
 
   export default defineComponent({
     name: 'DictManagement',
-    components: { BasicTable, RoleDrawer, TableAction },
+    components: { BasicTable, DictDrawer, TableAction },
     setup() {
       const [registerDrawer, { openDrawer }] = useDrawer();
       const [registerTable, { reload }] = useTable({
@@ -62,7 +65,6 @@
           title: '操作',
           dataIndex: 'action',
           // slots: { customRender: 'action' },
-          fixed: undefined,
         },
         pagination: true,
       });
@@ -84,7 +86,8 @@
         console.log(record);
       }
 
-      function handleSuccess() {
+      function handleSuccess(params) {
+        console.log('12345', params);
         reload();
       }
 

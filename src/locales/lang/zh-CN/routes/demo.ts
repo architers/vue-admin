@@ -162,7 +162,7 @@ export default {
     page: '引导页',
   },
   system: {
-    moduleName: '系统管理2',
+    moduleName: '系统管理',
     account: '账号管理',
     account_detail: '账号详情',
     password: '修改密码',
@@ -171,7 +171,7 @@ export default {
     role: '角色管理',
   },
   test: {
-    test1: '测试',
+    moduleName: '测试模板',
     dict: '数据字典',
   },
   table: {

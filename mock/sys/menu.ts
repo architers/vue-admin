@@ -143,7 +143,7 @@ const testRoute = {
   redirect: '/test/dict',
   meta: {
     icon: 'ion:settings-outline',
-    title: 'routes.demo.test.test1',
+    title: 'routes.demo.test.dict',
   },
   children: [
     {

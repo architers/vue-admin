@@ -268,6 +268,12 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
 }
 export const defHttp = createAxios();
 
+export const http = createAxios({
+  requestOptions: {
+    apiUrl: 'http://127.0.0.1:8888',
+  },
+});
+
 // other api url
 // export const otherHttp = createAxios({
 //   requestOptions: {

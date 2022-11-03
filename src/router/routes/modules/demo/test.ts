@@ -11,14 +11,14 @@ const test: AppRouteModule = {
   meta: {
     orderNo: 2000,
     icon: 'ion:settings-outline',
-    title: t('routes.demo.system.moduleName'),
+    title: t('routes.demo.test.moduleName'),
   },
   children: [
     {
       path: 'dict',
       name: 'DictManagement',
       meta: {
-        title: t('routes.demo.test.test1'),
+        title: t('routes.demo.test.dict'),
         ignoreKeepAlive: false,
       },
       component: () => import('/@/views/demo/test/dict/index.vue'),

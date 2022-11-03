@@ -254,25 +254,24 @@ export function useDataSource(
     if (!api || !isFunction(api)) return;
     try {
       setLoading(true);
-      const {pageField, sizeField, listField, totalField} = Object.assign(
+      const { pageField, sizeField, listField, totalField } = Object.assign(
         {},
         FETCH_SETTING,
         fetchSetting,
       );
       let pageParams: Recordable = {};
 
-      const {current = 1, pageSize = PAGE_SIZE} = unref(getPaginationInfo) as PaginationProps;
+      const { current = 1, pageSize = PAGE_SIZE } = unref(getPaginationInfo) as PaginationProps;
 
       // if(isBoolean(getPaginationInfo) &&  )
 
       if ((isBoolean(pagination) && !pagination) || isBoolean(getPaginationInfo)) {
         pageParams = {};
       } else {
-        pageParams = {pageParams: {pageNum: 1, pageSize: 10}}
         pageParams[pageField] = (opt && opt.pageNum) || current;
         pageParams[sizeField] = pageSize;
       }
-      const {sortInfo = {}, filterInfo} = searchState;
+      const { sortInfo = {}, filterInfo } = searchState;
 
       let params: Recordable = merge(
         pageParams,
