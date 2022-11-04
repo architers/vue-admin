@@ -5,9 +5,11 @@
         <a-button type="primary" @click="handleCreate"> 新增字典 </a-button>
         <a-button type="primary" @click="handleCreate"> 批量删除 </a-button>
         <a-button type="primary" @click="handleCreate"> 导入(json) </a-button>
-        <a-button type="primary" @click="handleCreate"> 导出(json) </a-button>
+        <a-button type="primary" @click="handleExportJsonDictData"> 导出(json) </a-button>
       </template>
-      <template #bodyCell="{ column, record }">
+      <template #bodyCell="{ column, record }" >
+
+
         <template v-if="column.key === 'action'">
           <TableAction
             :actions="[
@@ -21,7 +23,7 @@
                 popConfirm: {
                   title: '是否确认删除',
                   placement: 'left',
-                  confirm: handleDelete.bind(null, record),
+                  confirm: handleDeleteDictById.bind(null, record),
                 },
               },
             ]"
@@ -36,13 +38,14 @@
   import { defineComponent } from 'vue';
 
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
-  import { getDictByPage } from '/@/api/demo/dict';
+  import {getDictByPage, exportJsonDictData, deleteDictById} from '/@/api/demo/dict';
 
   import { useDrawer } from '/@/components/Drawer';
   import DictDrawer from './DictDrawer.vue';
 
   import { columns, searchFormSchema } from './dict.data';
-
+  import {ExportDictParams} from "/@/api/demo/model/dictModel";
+  import {createMessage, useMessage} from '/@/hooks/web/useMessage';
   export default defineComponent({
     name: 'DictManagement',
     components: { BasicTable, DictDrawer, TableAction },
@@ -56,10 +59,25 @@
           labelWidth: 120,
           schemas: searchFormSchema,
         },
+        beforeFetch:function (params) {
+          return {
+            pageParam: {
+              pageSize: params.pageSize,
+              pageNum: params.pageNum,
+            },
+            requestParam: {
+              dictCode: params.dictCode,
+              status: params.status,
+              dictCaption: params.dictCaption,
+            },
+          };
+        },
         useSearchForm: true,
         showTableSetting: true,
         bordered: true,
         showIndexColumn: true,
+        rowKey: 'id',
+        showSummary: true,
         actionColumn: {
           width: 80,
           title: '操作',
@@ -74,6 +92,16 @@
           isUpdate: false,
         });
       }
+      function handleExportJsonDictData(){
+        exportJsonDictData.apply(null);
+      }
+
+      const handleDeleteDictById = (record: Recordable) =>{
+          deleteDictById.call(this,record.id).then(()=>{
+            useMessage().createMessage.success("删除成功");
+            handleSuccess();
+          })
+      }
 
       function handleEdit(record: Recordable) {
         openDrawer(true, {
@@ -82,12 +110,7 @@
         });
       }
 
-      function handleDelete(record: Recordable) {
-        console.log(record);
-      }
-
-      function handleSuccess(params) {
-        console.log('12345', params);
+      function handleSuccess() {
         reload();
       }
 
@@ -96,8 +119,9 @@
         registerDrawer,
         handleCreate,
         handleEdit,
-        handleDelete,
         handleSuccess,
+        handleExportJsonDictData,
+        handleDeleteDictById
       };
     },
   });

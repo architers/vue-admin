@@ -1,15 +1,19 @@
-import { BasicFetchResult } from '/@/api/model/baseModel';
+import {BasicFetchResult, BasicJsonPageParams} from '/@/api/model/baseModel';
 
-// export  type DictPageParams = {
-//   pageParam: {
-//     pageSize?: number,
-//     pageNum?: number
-//   },
-//   requestParam: {
-//     dictCode?: string,
-//     dictCaption?: string
-//   }
-// }
+export  type DictPageParams = {
+  requestParam: {
+    dictCode?: string,
+    dictCaption?: string
+  }
+} & BasicJsonPageParams ;
+
+export  type ExportDictParams = {
+  dictCode?: string,
+  dictCaption?: string
+  checkData?:[]
+};
+
+
 
 export interface DictPageReturnList {
   id: number;

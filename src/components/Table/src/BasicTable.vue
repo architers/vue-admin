@@ -237,7 +237,6 @@
 
       const getBindValues = computed(() => {
         const dataSource = unref(getDataSourceRef);
-        console.log(dataSource);
         let propsData: Recordable = {
           ...attrs,
           customRow,
@@ -259,6 +258,7 @@
         // }
 
         propsData = omit(propsData, ['class', 'onChange']);
+
         return propsData;
       });
 
