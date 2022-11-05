@@ -1,20 +1,20 @@
 import { BasicColumn } from '/@/components/Table';
 import { FormSchema } from '/@/components/Table';
 
-export const dictColumns: BasicColumn[] = [
-  {
-    title: '字典名称',
-    dataIndex: 'dictCaption',
-    width: 200,
-  },
+export const tenantColumns: BasicColumn[] = [
   {
     title: '租户ID',
-    dataIndex: 'tenantId',
+    dataIndex: 'id',
     ifShow: false,
   },
   {
-    title: '字典编码',
-    dataIndex: 'dictCode',
+    title: '租户编码',
+    dataIndex: 'tenantCode',
+    width: 150,
+  },
+  {
+    title: '租户名称',
+    dataIndex: 'tenantCaption',
     width: 150,
   },
   {
@@ -44,20 +44,20 @@ export const dictColumns: BasicColumn[] = [
   },
 ];
 
-export const searchFormSchema: FormSchema[] = [
+export const tenantSearchFormSchema: FormSchema[] = [
   {
-    field: 'dictCode',
-    label: '字典编码',
+    field: 'tenantCode',
+    label: '租户编码',
     component: 'Input',
     colProps: { span: 8 },
-    helpMessage: '前缀匹配',
+    helpMessage: '模糊匹配',
   },
   {
-    field: 'dictCaption',
-    label: '字典名称',
+    field: 'tenantCaption',
+    label: '租户名称',
     component: 'Input',
     colProps: { span: 8 },
-    helpMessage: '前缀匹配',
+    helpMessage: '模糊匹配',
     rulesMessageJoinLabel: true,
   },
 ];

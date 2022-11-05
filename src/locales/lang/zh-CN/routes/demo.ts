@@ -171,8 +171,9 @@ export default {
     role: '角色管理',
   },
   test: {
-    moduleName: '测试模板',
+    moduleName: '测试模块',
     dict: '数据字典',
+    tenantManage: '租户管理',
   },
   table: {
     table: 'Table',

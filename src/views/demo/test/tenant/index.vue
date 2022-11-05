@@ -2,9 +2,7 @@
   <div>
     <BasicTable @register="registerTable">
       <template #toolbar>
-        <a-button type="primary" @click="handleCreate"> 新增字典 </a-button>
-        <a-button type="primary" @click="handleImportJsonDictData"> 导入(json) </a-button>
-        <a-button type="primary" @click="handleExportJsonDictData"> 导出(json) </a-button>
+        <a-button type="primary" @click="handleCreate"> 新增租户 </a-button>
       </template>
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'dictCaption'">
@@ -14,9 +12,8 @@
           <TableAction
             :actions="[
               {
-
                 onClick: handleEdit.bind(null, record),
-                 label: '编辑',
+                label: '编辑',
               },
               {
                 color: 'error',
@@ -30,7 +27,6 @@
               {
                 onClick: handleDictDataDetail.bind(null, record),
                 label: '管理数据',
-
               },
             ]"
           />
@@ -45,13 +41,14 @@
 
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
   import { getDictByPage, exportJsonDictData, deleteDictById } from '/@/api/demo/dict';
-  import { dictColumns, searchFormSchema } from './dict.data';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { useModal } from '/@/components/Modal';
   import DictModal from '/@/views/demo/test/dict/DictModal.vue';
   import DictImport from '/@/views/demo/test/dict/DictImport.vue';
   import { merge } from 'lodash-es';
   import { useGo } from '/@/hooks/web/usePage';
+  import { tenantColumns, tenantSearchFormSchema } from '/@/views/demo/test/tenant/tenant.data';
+  import {getTenantsByPage} from "/@/api/demo/tenant";
   export default defineComponent({
     name: 'DictManagement',
     components: { DictModal, BasicTable, TableAction },
@@ -59,12 +56,12 @@
       const [registerDictModal, { openModal }] = useModal();
       const go = useGo();
       const [registerTable, { reload, getSelectRowKeys, getForm }] = useTable({
-        title: '数据字典列表',
-        api: getDictByPage,
-        columns: dictColumns,
+        title: '租户列表',
+        api: getTenantsByPage,
+        columns: tenantColumns,
         formConfig: {
           labelWidth: 120,
-          schemas: searchFormSchema,
+          schemas: tenantSearchFormSchema,
         },
         rowSelection: {
           type: 'checkbox',

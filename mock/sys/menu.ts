@@ -1,6 +1,7 @@
 import { resultSuccess, resultError, getRequestToken, requestParams } from '../_util';
 import { MockMethod } from 'vite-plugin-mock';
 import { createFakeUserList } from './user';
+import { t } from '/@/hooks/web/useI18n';
 
 // single
 const dashboardRoute = {
@@ -154,7 +155,29 @@ const testRoute = {
         ignoreKeepAlive: true,
       },
       component: '/demo/test/dict/index',
-    }]
+    },
+    {
+      path: 'dict_data',
+      name: 'DictData',
+      meta: {
+        hideMenu: true,
+        title: '数据字典值',
+        ignoreKeepAlive: true,
+        showMenu: false,
+        currentActiveMenu: '/test',
+      },
+      component: '/demo/test/dict/DictDataDetail.vue',
+    },
+    {
+      path: 'tenantManage',
+      name: 'TenantManage',
+      meta: {
+        title: t('routes.demo.test.tenantManage'),
+        ignoreKeepAlive: false,
+      },
+      component: '/demo/test/tenant/index.vue',
+    },
+  ],
 };
 
 const sysRoute = {
@@ -275,7 +298,7 @@ export default [
       switch (id) {
         case '1':
           dashboardRoute.redirect = dashboardRoute.path + '/' + dashboardRoute.children[0].path;
-          menu = [dashboardRoute, authRoute, levelRoute, sysRoute,testRoute, linkRoute];
+          menu = [dashboardRoute, authRoute, levelRoute, sysRoute, testRoute, linkRoute];
           break;
         case '2':
           dashboardRoute.redirect = dashboardRoute.path + '/' + dashboardRoute.children[1].path;

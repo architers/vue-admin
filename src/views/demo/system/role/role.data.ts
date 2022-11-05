@@ -41,7 +41,7 @@ export const columns: BasicColumn[] = [
           setRoleStatus(record.id, newStatus)
             .then(() => {
               record.status = newStatus;
-              createMessage.success(`已成功修改角色状态`);
+              createMessage.success(`已成功字典值`);
             })
             .catch(() => {
               createMessage.error('修改角色状态失败');

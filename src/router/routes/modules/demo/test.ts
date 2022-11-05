@@ -22,7 +22,30 @@ const test: AppRouteModule = {
         ignoreKeepAlive: false,
       },
       component: () => import('/@/views/demo/test/dict/index.vue'),
-    }
+    },
+    {
+      path: 'dict_data',
+      name: 'DictData',
+      meta: {
+        hideMenu: true,
+        title: '数据字典值',
+        ignoreKeepAlive: true,
+        showMenu: false,
+        currentActiveMenu: '/test',
+      },
+      component: () => import('/@/views/demo/test/dict/DictDataDetail.vue'),
+    },
+    {
+      path: 'tenantManage',
+      name: 'TenantManage',
+
+      meta: {
+        title: t('routes.demo.test.tenantManage'),
+        ignoreKeepAlive: false,
+      },
+
+      component: () => import('/@/views/demo/test/tenant/index.vue'),
+    },
   ],
 };
 
