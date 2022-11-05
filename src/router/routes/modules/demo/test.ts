@@ -9,7 +9,7 @@ const test: AppRouteModule = {
   component: LAYOUT,
   redirect: '/test/dict',
   meta: {
-    orderNo: 2000,
+    orderNo: 1,
     icon: 'ion:settings-outline',
     title: t('routes.demo.test.moduleName'),
   },

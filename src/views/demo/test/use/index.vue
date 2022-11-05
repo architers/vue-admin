@@ -2,7 +2,7 @@
   <div>
     <BasicTable @register="registerTable">
       <template #toolbar>
-        <a-button type="primary" @click="handleCreate"> 新增租户 </a-button>
+        <a-button type="primary" @click="handleCreate"> 添加用户 </a-button>
       </template>
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'action'">
@@ -40,7 +40,7 @@
   import { deleteById, getTenantsByPage } from '/@/api/demo/tenant';
   import TenantModal from '/@/views/demo/test/tenant/TenantModal.vue';
   export default defineComponent({
-    name: 'DictManagement',
+    name: 'UserManagement',
     components: { TenantModal, BasicTable, TableAction },
     setup() {
       const [registerTenantModal, { openModal }] = useModal();

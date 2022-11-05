@@ -69,6 +69,9 @@ export const formSchema: FormSchema[] = [
     required: false,
     component: 'Input',
     show: false,
+    defaultValue: ({ values }) => {
+      return values.id;
+    },
   },
   {
     field: 'dictCode',

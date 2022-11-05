@@ -3,6 +3,58 @@ import { MockMethod } from 'vite-plugin-mock';
 import { createFakeUserList } from './user';
 import { t } from '/@/hooks/web/useI18n';
 
+const testRoute = {
+  path: '/test',
+  name: 'Test',
+  component: 'LAYOUT',
+  redirect: '/test/dict',
+  meta: {
+    icon: 'ion:settings-outline',
+    title: 'routes.demo.test.dict',
+  },
+  children: [
+    {
+      path: 'dict',
+      name: 'DictManagement',
+      meta: {
+        title: 'routes.demo.test.dict',
+        ignoreKeepAlive: true,
+      },
+      component: '/demo/test/dict/index',
+    },
+    {
+      path: 'dict_data',
+      name: 'DictData',
+      meta: {
+        hideMenu: true,
+        title: '数据字典值',
+        ignoreKeepAlive: true,
+        showMenu: false,
+        currentActiveMenu: '/test',
+      },
+      component: '/demo/test/dict/DictDataDetail.vue',
+    },
+    {
+      path: 'tenantManage',
+      name: 'TenantManage',
+      meta: {
+        title: t('routes.demo.test.tenantManage'),
+        ignoreKeepAlive: false,
+      },
+      component: '/demo/test/tenant/index.vue',
+    },
+    {
+      path: 'tenantManage',
+      name: 'TenantManage',
+      meta: {
+        title: t('routes.demo.test.tenantManage'),
+        ignoreKeepAlive: false,
+      },
+      component: '/demo/test/tenant/index.vue',
+    },
+  ],
+};
+
 // single
 const dashboardRoute = {
   path: '/dashboard',
@@ -137,49 +189,6 @@ const levelRoute = {
   ],
 };
 
-const testRoute = {
-  path: '/test',
-  name: 'Test',
-  component: 'LAYOUT',
-  redirect: '/test/dict',
-  meta: {
-    icon: 'ion:settings-outline',
-    title: 'routes.demo.test.dict',
-  },
-  children: [
-    {
-      path: 'dict',
-      name: 'DictManagement',
-      meta: {
-        title: 'routes.demo.test.dict',
-        ignoreKeepAlive: true,
-      },
-      component: '/demo/test/dict/index',
-    },
-    {
-      path: 'dict_data',
-      name: 'DictData',
-      meta: {
-        hideMenu: true,
-        title: '数据字典值',
-        ignoreKeepAlive: true,
-        showMenu: false,
-        currentActiveMenu: '/test',
-      },
-      component: '/demo/test/dict/DictDataDetail.vue',
-    },
-    {
-      path: 'tenantManage',
-      name: 'TenantManage',
-      meta: {
-        title: t('routes.demo.test.tenantManage'),
-        ignoreKeepAlive: false,
-      },
-      component: '/demo/test/tenant/index.vue',
-    },
-  ],
-};
-
 const sysRoute = {
   path: '/system',
   name: 'System',
@@ -298,7 +307,7 @@ export default [
       switch (id) {
         case '1':
           dashboardRoute.redirect = dashboardRoute.path + '/' + dashboardRoute.children[0].path;
-          menu = [dashboardRoute, authRoute, levelRoute, sysRoute, testRoute, linkRoute];
+          menu = [testRoute, dashboardRoute, authRoute, levelRoute, sysRoute, linkRoute];
           break;
         case '2':
           dashboardRoute.redirect = dashboardRoute.path + '/' + dashboardRoute.children[1].path;

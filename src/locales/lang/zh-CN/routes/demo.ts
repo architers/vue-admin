@@ -174,6 +174,7 @@ export default {
     moduleName: '测试模块',
     dict: '数据字典',
     tenantManage: '租户管理',
+    userManage: '租户管理',
   },
   table: {
     table: 'Table',
